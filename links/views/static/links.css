@@ -1,0 +1,36 @@
+.links-content {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-info {
+    margin-bottom: 3ch;
+}
+
+.account-info h1,
+.account-info h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.links-container {
+    width: 50%;
+}
+
+.link-entry {
+    background-color: pink;
+    display: flex;
+}
+
+.link-entry a {
+    line-height: 5ch;
+    color: aqua;
+    flex-grow: 1;
+}
+
+.link-entry a:hover {
+    color: aquamarine;
+}

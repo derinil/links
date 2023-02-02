@@ -1,0 +1,31 @@
+{{ define "header" }}
+<link rel="stylesheet" href="static/links.css" />
+{{ if .Cmd.Account.CSS }}
+<style>
+{{ .Cmd.Account.CSS }}
+</style>
+{{ end }}
+{{ end }}
+
+<!---->
+
+{{ define "content" }}
+<div class="links-content">
+  <div class="account-info">
+    <h1 class="account-name">{{ .Cmd.Account.Name }}</h1>
+    <h4 class="account-handle">@{{ .Cmd.Account.Handle }}</h4>
+  </div>
+
+    <div class="links-container">
+      {{ range $index, $element := .Cmd.Account.Links }}
+      <!-- line break hack for the formatter -->
+      {{ $id := print "link_" $index }}
+
+      <div class="link-entry">
+        <a href="{{ $element.Link }}">{{ $element.Title }}</a>
+      </div>
+      {{ end }}
+    </div>
+  </form>
+</div>
+{{ end }}

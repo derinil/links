@@ -1,0 +1,19 @@
+{{ define "header" }}
+<link rel="stylesheet" href="static/index.css" />
+{{ end }}
+<!---->
+{{ define "content" }}
+<div class="index-content">
+  <div class="glow">Links!</div>
+  <div class="marquee-container">
+    <marquee scrollamount="15" behavior="alternate"
+      >Epic links page where you can design your own CSS!</marquee
+    >
+  </div>
+  {{ if .Message }}
+  <p class="success italic">{{ .Message }}</p>
+  {{ else if .ErrorMsg }}
+  <p class="error italic">{{ .ErrorMsg }}</p>
+  {{ end }}
+</div>
+{{ end }}

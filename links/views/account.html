@@ -1,0 +1,125 @@
+{{ define "header" }}
+<link rel="stylesheet" href="static/register.css" />
+<link rel="stylesheet" href="static/account.css" />
+<script src="static/account.js"></script>
+{{ end }}
+
+<!---->
+
+{{ define "content" }}
+<div class="account-content">
+  <h1 class="edit-title">Edit your !links!!</h1>
+
+  <a href="/{{ .Cmd.Account.Handle }}">See your links page!</a>
+
+  {{ if .Message }}
+  <p class="success italic">{{ .Message }}</p>
+  {{ end }}
+
+  <form class="account-form" action="/account" method="post" id="account-form">
+    <div>
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        maxlength="128"
+        pattern="^[^\s]*$"
+        title="Get rid of the spaces around your name!"
+        value="{{ .Cmd.Account.Name }}"
+        autofocus
+        required
+      />
+    </div>
+
+    <div>
+      <label for="handle">Handle</label>
+      <input
+        type="text"
+        name="handle"
+        id="handle"
+        pattern="^[a-z0-9]{3,24}$"
+        title="Handle must be 3 to 24 characters and only letters and numbers!"
+        value="{{ .Cmd.Account.Handle }}"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="css">CSS</label>
+      <textarea type="text" name="css" id="css">{{ .Cmd.Account.CSS }}</textarea>
+    </div>
+
+    <div class="links-container">
+      {{ range $index, $element := .Cmd.Account.Links }}
+      <!-- line break hack for the formatter -->
+      {{ $id := print "link_" $index }}
+
+      <div class="link-entry">
+        <div class="link-edit">
+          <label class="italic link-title">Link #{{ add $index 1 }}</label>
+
+          <label class="sub-label" for="links_{{ $index }}_title">Title</label>
+          <input
+            type="text"
+            name="links_title[]"
+            id="links_{{ $index }}_title"
+            maxlength="128"
+            value="{{ $element.Title }}"
+            required
+          />
+
+          <label class="sub-label" for="links_{{ $index }}_url">URL</label>
+          <input
+            type="url"
+            name="links_url[]"
+            id="links_{{ $index }}_url"
+            value="{{ $element.Link }}"
+            required
+          />
+        </div>
+
+        <div class="link-control">
+          <button
+            class="small-button remove-link"
+            type="button"
+            data-index="{{ $index }}"
+          >
+            ❌
+          </button>
+          <button
+            class="small-button move-link-up"
+            type="button"
+            data-index="{{ $index }}"
+          >
+            ⬆
+          </button>
+          <button
+            class="small-button move-link-down"
+            type="button"
+            data-index="{{ $index }}"
+          >
+            ⬇
+          </button>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <button class="small-button add-link" type="button">➕</button>
+
+    <input
+      type="hidden"
+      name="csrf_token"
+      id="csrf_token"
+      value="{{ .CSRFToken }}"
+    />
+
+    {{ if .ErrorMsg }}
+    <p class="error italic">{{ .ErrorMsg }}</p>
+    {{ end }}
+
+    <button type="submit">Update Account</button>
+  </form>
+</div>
+{{ end }}

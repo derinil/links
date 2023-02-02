@@ -1,0 +1,27 @@
+.index-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.glow {
+    font-family: cursive;
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 20px white, 0 0 30px #FE9000, 0 0 40px #FE9000, 0 0 50px #FE9000, 0 0 60px #FE9000, 0 0 70px #FE9000, 0 0 80px #FE9000;
+    position: relative;
+}
+
+.marquee-container {
+    z-index: 1000;
+    position:absolute;
+    width: 150px;
+    background: linear-gradient(167deg, rgba(6,36,0,1) 0%, rgba(121,9,78,1) 0%, rgba(0,212,255,1) 100%);
+    font-size: larger;
+    margin-top: 3ch;
+    rotate: -28deg;
+}

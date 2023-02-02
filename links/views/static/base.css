@@ -1,0 +1,80 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: large;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url("/static/unico.jpg");
+    background-size: 20vw;
+    color: white;
+}
+
+a:link {
+    color: #FCDE9C;
+}
+
+a:visited {
+    color: #FFA552;
+}
+
+.navbar {
+    word-spacing: 2ch;
+    line-height: 5ch;
+    font-size: larger;
+    text-align: center;
+}
+
+#logout-form {
+    all: unset;
+}
+
+button.logout {
+    all: unset;
+    cursor: pointer;
+    color: #FCDE9C;
+    text-decoration: underline;
+    line-height: normal;
+}
+
+button.logout:focus {
+    outline: revert;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+footer {
+    text-align: center;
+    font-size: small;
+    bottom: 0;
+}
+
+.error {
+    color: #E71D36;
+    font-weight: bolder;
+}
+
+form label {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.success {
+    color: #0CCE6B;
+    font-weight: bolder;
+}

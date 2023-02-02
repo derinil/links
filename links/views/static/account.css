@@ -1,0 +1,59 @@
+.edit-title {
+    color: darkorchid;
+    text-align: center;
+}
+
+.sub-label {
+    font-size: large;
+}
+
+label {
+    color: #FDE12D;
+}
+
+textarea {
+    height: 10ch;
+}
+
+.account-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.account-form {
+    width: 50%;
+}
+
+.links-container {
+    gap: 1ch;
+}
+
+.link-entry {
+    border: 2px solid hotpink;
+    flex-direction: row;
+}
+
+.link-edit {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.link-control {
+    justify-content: space-between;
+}
+
+.add-link {
+    color: transparent;
+    text-shadow: 0 0 0 #00FF00;
+}
+
+.small-button {
+    font-size: medium;
+    width: fit-content;
+}
+
+.small-button.add-link {
+    align-self: flex-end;
+}

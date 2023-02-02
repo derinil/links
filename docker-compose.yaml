@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  redis:
+    image: redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6379:6379
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_DB=example
+      - POSTGRES_USER=example
+      - POSTGRES_PASSWORD=example
+    ports:
+      - 6000:5432

@@ -1,0 +1,79 @@
+{{ define "header" }}
+<link rel="stylesheet" href="static/register.css" />
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const p1 = document.getElementById("password");
+    const p2 = document.getElementById("password_repeat");
+
+    const validate = (event) => {
+      if (!p1.validity.patternMismatch) {
+        p1.value != p2.value
+          ? p1.setCustomValidity("Passwords must match!")
+          : p1.setCustomValidity("");
+      }
+    };
+
+    p1.addEventListener("input", validate);
+    p2.addEventListener("input", validate);
+
+    const form = document.getElementById("register-form");
+    form.addEventListener("submit", (event) => {
+      return event.target.checkValidity();
+    });
+  });
+</script>
+{{ end }}
+
+<!---->
+
+{{ define "content" }}
+<div class="register-content">
+  <h1 class="title">Register!</h1>
+
+  <form
+    class="register-form"
+    action="/register"
+    method="post"
+    id="register-form"
+  >
+    <label for="name">Name</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      maxlength="128"
+      autofocus
+      required
+    />
+
+    <label for="handle">Handle</label>
+    <input
+      type="text"
+      name="handle"
+      id="handle"
+      pattern="^[a-z0-9]{3,24}$"
+      title="Handle must be 3 to 24 characters and only letters and numbers!"
+      required
+    />
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required />
+
+    <label for="password_repeat">Repeat your password</label>
+    <input type="password" id="password_repeat" required />
+
+    <input
+      type="hidden"
+      name="csrf_token"
+      id="csrf_token"
+      value="{{ .CSRFToken }}"
+    />
+
+    {{ if .ErrorMsg }}
+    <p class="error italic">{{ .ErrorMsg }}</p>
+    {{ end }}
+
+    <button type="submit">Register</button>
+  </form>
+</div>
+{{ end }}

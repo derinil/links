@@ -1,0 +1,45 @@
+{{ define "header" }}
+<link rel="stylesheet" href="static/register.css" />
+{{ end }}
+
+<!---->
+
+{{ define "content" }}
+<div class="login-content">
+  <h1 class="title login">Login!</h1>
+
+  <form
+    class="login-form"
+    action="/login"
+    method="post"
+    id="login-form"
+  >
+    <label for="handle">Handle</label>
+    <input
+      type="text"
+      name="handle"
+      id="handle"
+      pattern="^[a-z0-9]{3,24}$"
+      title="Handle must be 3 to 24 characters and only letters and numbers!"
+      autofocus
+      required
+    />
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required />
+
+    <input
+      type="hidden"
+      name="csrf_token"
+      id="csrf_token"
+      value="{{ .CSRFToken }}"
+    />
+
+    {{ if .ErrorMsg }}
+    <p class="error italic">{{ .ErrorMsg }}</p>
+    {{ end }}
+
+    <button type="submit">Register</button>
+  </form>
+</div>
+{{ end }}
